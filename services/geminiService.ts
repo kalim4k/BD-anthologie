@@ -1,9 +1,11 @@
 
 import { GoogleGenAI } from "@google/genai";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-
 export const getComicRecommendation = async (userTaste: string) => {
+  // Initialisation à l'intérieur de la fonction pour garantir que process.env est prêt
+  // et éviter de bloquer le rendu initial de la page.
+  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+
   try {
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
