@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ShieldCheck, CreditCard, Loader2, User, Mail, Phone, ArrowLeft } from 'lucide-react';
+import { ShieldCheck, CreditCard, Loader2, User, Mail, Phone } from 'lucide-react';
 import { initiatePayment } from '../services/paymentService';
 import { PRICE } from '../constants';
 
@@ -46,14 +46,6 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ onCancel }) => {
   return (
     <div className="pt-32 pb-24 px-4 sm:px-6 lg:px-8 animate-in slide-in-from-bottom-4 duration-500">
       <div className="max-w-2xl mx-auto">
-        <button 
-          onClick={onCancel}
-          className="flex items-center gap-2 text-slate-400 hover:text-indigo-600 transition-colors mb-8 font-semibold"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          Retour
-        </button>
-
         <div className="bg-white rounded-[40px] p-8 md:p-12 border border-slate-200 shadow-2xl shadow-slate-200/50">
           <div className="text-center mb-10">
             <div className="w-16 h-16 bg-indigo-50 rounded-2xl flex items-center justify-center mx-auto mb-6">
