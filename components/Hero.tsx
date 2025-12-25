@@ -1,7 +1,6 @@
-
 import React from 'react';
 import { PRICE } from '../constants';
-import { ChevronRight, Star } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 
 interface HeroProps {
   onBuy: () => void;
@@ -10,17 +9,11 @@ interface HeroProps {
 const Hero: React.FC<HeroProps> = ({ onBuy }) => {
   return (
     <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 opacity-10">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-indigo-500 rounded-full blur-[100px]"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-500 rounded-full blur-[100px]"></div>
-      </div>
+      {/* Les décorations d'arrière-plan ont été supprimées ici */}
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 text-sm font-semibold mb-6 animate-bounce">
-            <Star className="w-4 h-4 fill-indigo-600" />
-            <span>Offre Limitée - 6 BDs Incluses</span>
-          </div>
+          {/* Le badge Offre Limitée a été supprimé ici */}
           
           <h1 className="text-5xl lg:text-7xl font-extrabold text-slate-900 leading-tight mb-6">
             L'Anthologie BD <br />
