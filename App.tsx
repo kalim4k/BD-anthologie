@@ -1,7 +1,6 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import CheckoutPage from './components/CheckoutPage';
-import Footer from './components/Footer';
 
 const App: React.FC = () => {
   return (
@@ -16,8 +15,6 @@ const App: React.FC = () => {
           <CheckoutPage />
         </div>
       </main>
-
-      <Footer />
     </div>
   );
 };
