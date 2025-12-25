@@ -22,26 +22,22 @@ export const initiatePayment = async (data: PaymentRequest) => {
     personal_Info: [
       {
         email: data.email,
-        orderDate: new Date().toISOString()
+        orderId: `BD-${Date.now()}`
       }
     ],
-    return_url: window.location.href, // Redirige ici après le paiement
+    return_url: window.location.href,
   };
 
   try {
     const response = await fetch(API_URL, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
     });
-    
-    if (!response.ok) throw new Error('Erreur lors de l\'initiation du paiement');
-    
+    if (!response.ok) throw new Error('Erreur réseau lors de l\'initiation');
     return await response.json();
   } catch (error) {
-    console.error("Payment Error:", error);
+    console.error("Payment Initiation Error:", error);
     throw error;
   }
 };
@@ -49,7 +45,7 @@ export const initiatePayment = async (data: PaymentRequest) => {
 export const checkStatus = async (token: string) => {
   try {
     const response = await fetch(`${STATUS_URL}${token}`);
-    if (!response.ok) throw new Error('Erreur lors de la vérification');
+    if (!response.ok) throw new Error('Erreur de vérification');
     return await response.json();
   } catch (error) {
     console.error("Status Check Error:", error);
