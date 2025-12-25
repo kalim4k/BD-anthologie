@@ -12,12 +12,16 @@ const App: React.FC = () => {
   const [isSuccess, setIsSuccess] = useState(false);
 
   useEffect(() => {
-    // Détection du retour de paiement via le paramètre token renvoyé par MoneyFusion
+    // Détection si on est sur la page de confirmation physique ou si on a un token
     const params = new URLSearchParams(window.location.search);
-    if (params.get('token')) {
+    const isConfirmationPage = window.location.pathname.includes('confirmation.html');
+    
+    if (params.get('token') || isConfirmationPage) {
       setIsSuccess(true);
-      // Nettoyer l'URL sans recharger la page
-      window.history.replaceState({}, '', '/');
+      // On nettoie l'URL pour la navigation future
+      if (isConfirmationPage) {
+        window.history.replaceState({}, '', '/');
+      }
     }
 
     const handlePopState = () => {
@@ -42,18 +46,18 @@ const App: React.FC = () => {
       }} />;
     }
 
-    // Page de confirmation d'achat
-    if (currentPath === '/confirmation') {
+    // Page de formulaire d'achat (URL virtuelle /achat)
+    if (currentPath === '/achat') {
       return <CheckoutPage />;
     }
 
-    // Landing Page épurée sans CollectionSection ni Footer
+    // Landing Page par défaut
     return (
       <div className="animate-in fade-in duration-700">
-        <Hero onBuy={() => navigateTo('/confirmation')} />
+        <Hero onBuy={() => navigateTo('/achat')} />
         <FeaturesSection />
         <AIConsultant />
-        <PricingSection onBuy={() => navigateTo('/confirmation')} />
+        <PricingSection onBuy={() => navigateTo('/achat')} />
       </div>
     );
   };
@@ -65,7 +69,7 @@ const App: React.FC = () => {
           setIsSuccess(false);
           navigateTo('/');
         }} 
-        onBuy={() => navigateTo('/confirmation')} 
+        onBuy={() => navigateTo('/achat')} 
       />
       
       <main className="transition-all duration-500 ease-in-out">

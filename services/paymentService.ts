@@ -8,8 +8,8 @@ export interface PaymentRequest {
 }
 
 export const initiatePayment = async (data: PaymentRequest) => {
-  // On redirige vers /confirmation pour que l'App puisse traiter le token de succès
-  const returnUrl = `${window.location.origin}/confirmation`;
+  // On pointe vers le fichier physique pour éviter les erreurs serveur
+  const returnUrl = `${window.location.origin}/confirmation.html`;
 
   const payload = {
     totalPrice: data.totalPrice,
