@@ -1,9 +1,7 @@
-
 import { GoogleGenAI } from "@google/genai";
 
 export const getComicRecommendation = async (userTaste: string) => {
-  // Initialisation à l'intérieur de la fonction pour garantir que process.env est prêt
-  // et éviter de bloquer le rendu initial de la page.
+  // L'initialisation doit utiliser process.env.API_KEY directement
   const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
   try {

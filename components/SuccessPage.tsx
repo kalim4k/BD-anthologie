@@ -1,8 +1,11 @@
-
 import React from 'react';
-import { PartyPopper, Check, Clock, Mail, MessageCircle } from 'lucide-react';
+import { Check, Mail, MessageCircle, Clock } from 'lucide-react';
 
-const SuccessPage: React.FC = () => {
+interface SuccessPageProps {
+  onBack: () => void;
+}
+
+const SuccessPage: React.FC<SuccessPageProps> = ({ onBack }) => {
   return (
     <div className="pt-40 pb-32 px-4 flex items-center justify-center min-h-[80vh]">
       <div className="max-w-2xl w-full text-center animate-in zoom-in duration-700">
@@ -44,7 +47,7 @@ const SuccessPage: React.FC = () => {
         </div>
 
         <button 
-          onClick={() => window.location.href = '/'}
+          onClick={onBack}
           className="mt-12 text-slate-400 font-bold hover:text-indigo-600 transition-colors text-sm uppercase tracking-widest"
         >
           Retour à l'accueil

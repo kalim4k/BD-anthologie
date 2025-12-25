@@ -1,6 +1,4 @@
-
 const API_URL = "https://www.pay.moneyfusion.net/BD_antropic/676ffa5dfafba0d6/pay/";
-const STATUS_URL = "https://www.pay.moneyfusion.net/paiementNotif/";
 
 export interface PaymentRequest {
   totalPrice: number;
@@ -10,11 +8,15 @@ export interface PaymentRequest {
 }
 
 export const initiatePayment = async (data: PaymentRequest) => {
+  // On utilise l'origine actuelle pour le retour
+  const returnUrl = window.location.origin;
+
   const payload = {
     totalPrice: data.totalPrice,
     article: [
       {
-        "Collection Complete 6 BDs": data.totalPrice
+        "pack": "Collection Intégrale 6 BDs",
+        "price": data.totalPrice
       }
     ],
     numeroSend: data.numeroSend,
@@ -25,7 +27,7 @@ export const initiatePayment = async (data: PaymentRequest) => {
         orderId: `BD-${Date.now()}`
       }
     ],
-    return_url: window.location.href,
+    return_url: returnUrl,
   };
 
   try {
@@ -38,17 +40,6 @@ export const initiatePayment = async (data: PaymentRequest) => {
     return await response.json();
   } catch (error) {
     console.error("Payment Initiation Error:", error);
-    throw error;
-  }
-};
-
-export const checkStatus = async (token: string) => {
-  try {
-    const response = await fetch(`${STATUS_URL}${token}`);
-    if (!response.ok) throw new Error('Erreur de vérification');
-    return await response.json();
-  } catch (error) {
-    console.error("Status Check Error:", error);
     throw error;
   }
 };
