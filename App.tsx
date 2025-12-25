@@ -44,7 +44,7 @@ const App: React.FC = () => {
 
     // Page de confirmation d'achat
     if (currentPath === '/confirmation') {
-      return <CheckoutPage onCancel={() => navigateTo('/')} />;
+      return <CheckoutPage />;
     }
 
     // Landing Page épurée sans CollectionSection ni Footer

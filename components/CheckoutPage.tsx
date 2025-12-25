@@ -3,11 +3,7 @@ import { ShieldCheck, CreditCard, Loader2, User, Mail, Phone } from 'lucide-reac
 import { initiatePayment } from '../services/paymentService';
 import { PRICE } from '../constants';
 
-interface CheckoutPageProps {
-  onCancel: () => void;
-}
-
-const CheckoutPage: React.FC<CheckoutPageProps> = ({ onCancel }) => {
+const CheckoutPage: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     firstName: '',
