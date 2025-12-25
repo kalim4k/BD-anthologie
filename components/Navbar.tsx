@@ -4,9 +4,10 @@ import { BookOpen } from 'lucide-react';
 
 interface NavbarProps {
   onHome: () => void;
+  onBuy: () => void;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ onHome }) => {
+const Navbar: React.FC<NavbarProps> = ({ onHome, onBuy }) => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -20,7 +21,12 @@ const Navbar: React.FC<NavbarProps> = ({ onHome }) => {
           </button>
           <div className="hidden md:flex items-center gap-8">
             <button onClick={onHome} className="text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors">Accueil</button>
-            <a href="#buy" className="px-4 py-2 bg-indigo-600 text-white rounded-full text-sm font-semibold hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-200">Acheter</a>
+            <button 
+              onClick={onBuy}
+              className="px-4 py-2 bg-indigo-600 text-white rounded-full text-sm font-semibold hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-200"
+            >
+              Acheter
+            </button>
           </div>
         </div>
       </div>
