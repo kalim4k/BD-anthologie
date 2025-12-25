@@ -9,7 +9,6 @@ export interface PaymentRequest {
 
 export const initiatePayment = async (data: PaymentRequest) => {
   // On utilise une URL absolue vers le fichier physique confirmation.html
-  // Cela garantit que le serveur servira ce fichier au lieu de renvoyer une 404
   const returnUrl = `${window.location.origin}/confirmation.html`;
 
   const payload = {

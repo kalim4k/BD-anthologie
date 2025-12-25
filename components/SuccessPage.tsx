@@ -5,10 +5,10 @@ interface SuccessPageProps {
   onBack: () => void;
 }
 
-const SuccessPage: React.FC<SuccessPageProps> = ({ onBack }) => {
+const SuccessPage: React.FC<SuccessPageProps> = () => {
   return (
-    <div className="pt-40 pb-32 px-4 flex items-center justify-center min-h-[80vh]">
-      <div className="max-w-2xl w-full text-center animate-in zoom-in duration-700">
+    <div className="px-4 w-full animate-in fade-in zoom-in duration-700">
+      <div className="max-w-2xl w-full text-center mx-auto">
         <div className="w-24 h-24 bg-green-500 text-white rounded-full flex items-center justify-center mx-auto mb-8 shadow-2xl shadow-green-200">
           <Check className="w-12 h-12" />
         </div>
@@ -45,13 +45,6 @@ const SuccessPage: React.FC<SuccessPageProps> = ({ onBack }) => {
           <Clock className="w-6 h-6" />
           <span className="font-bold">Envoi prévu d'ici quelques heures le temps de valider votre accès.</span>
         </div>
-
-        <button 
-          onClick={onBack}
-          className="mt-12 text-slate-400 font-bold hover:text-indigo-600 transition-colors text-sm uppercase tracking-widest"
-        >
-          Retour à l'accueil
-        </button>
       </div>
     </div>
   );
