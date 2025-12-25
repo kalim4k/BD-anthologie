@@ -8,7 +8,7 @@ export interface PaymentRequest {
 }
 
 export const initiatePayment = async (data: PaymentRequest) => {
-  // On pointe vers le fichier physique pour éviter les erreurs serveur
+  // On utilise une URL absolue vers le fichier physique confirmation.html
   const returnUrl = `${window.location.origin}/confirmation.html`;
 
   const payload = {
