@@ -8,8 +8,8 @@ export interface PaymentRequest {
 }
 
 export const initiatePayment = async (data: PaymentRequest) => {
-  // On utilise l'origine actuelle pour le retour
-  const returnUrl = window.location.origin;
+  // On redirige vers /confirmation pour que l'App puisse traiter le token de succès
+  const returnUrl = `${window.location.origin}/confirmation`;
 
   const payload = {
     totalPrice: data.totalPrice,
